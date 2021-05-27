@@ -21,7 +21,6 @@ function HailHydra() {
 function FavoriteChar(){
     let userFavorite = prompt('Who is your favorite marvel character?');
     console.log(userFavorite);
-
     document.write('<h3>' + 'Your favorite character is ' + userFavorite + '</h3>');
     if (userFavorite.toLowerCase() == 'deadpool') {    
         document.write('<img src="https://pbs.twimg.com/media/D2cuKrOWoAA46Nw.jpg"')
@@ -42,5 +41,43 @@ function FavoriteChar(){
         document.write('<img src="https://media.giphy.com/media/BWD3CtcudWL28/giphy.gif"')
     } else {
         document.write('<img src="https://media.giphy.com/media/ie76dJeem4xBDcf83e/giphy.gif"')
+    }
+}
+
+function userGuessingGame() {
+    correctAnswer = Math.floor(Math.random() * 1000) + 1;
+    console.log(correctAnswer)
+    userAttempts = 10;
+    for(let i = 0; i < userAttempts; i++){
+        let userGuess = prompt('Please Enter a Number 1 - 1000:' + ' (You have ' + (userAttempts - i) + ' attempts left.)');
+
+        while(userGuess < 1 || userGuess > 1000){
+            userGuess = prompt('Wrong Range.  Please Enter a Number 1 - 1000');
+        }
+        if (userGuess == correctAnswer){
+            alert('You got it right! Congratulations!');
+            break;
+        } else if(userGuess < correctAnswer){
+            alert('Too Low.  Try Again.')
+        }  else if (userGuess > correctAnswer) {
+            alert('Too High.  Try Again.')
+        } else {
+            alert('Something Else Went Wrong.');
+        }
+        console.log(i);
+        if (i == userAttempts - 1){
+            alert('You did not win.  Correct answer is: ' + correctAnswer);
+        }
+    }
+}
+
+userGuessingGame();
+
+function PictureCount(){
+    let PictureNumber = prompt('How many times do you want Thanos to Snap ?')
+    console.log(PictureNumber)
+    for (let i = 0; i < PictureNumber; i ++) {
+        document.write('<img src="https://media.giphy.com/media/ie76dJeem4xBDcf83e/giphy.gif">')
+        document.write('<h3> Snap ' + (i + 1) +  '</h3>')
     }
 }
